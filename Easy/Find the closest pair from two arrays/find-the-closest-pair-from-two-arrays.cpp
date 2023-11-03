@@ -11,29 +11,51 @@ class Solution{
     vector<int> printClosest(int arr[], int brr[], int n, int m, int x) {
         int i=0,j=m-1,diff=INT_MAX; //arr[ ] = {1, 4, 5, 7} 
                                 // brr[ ] = {10, 20, 30, 40} 
-       vector<int>ans;
+    //   vector<int>ans;
+    int result_a,result_b;
        
-       while(i<n && j>=0)
-       {
-           int sum= arr[i]+brr[j];  //31
+      while(i<n && j>=0)
+      {
+          int sum= arr[i]+brr[j];  //31
            
            
            
-           if(diff>abs(sum-x))   
-           {      //
-               diff=abs(sum-x);       //1
-               ans={arr[i],brr[j]};   // {1,30}
-           }
+          if(diff>abs(sum-x))   
+          {      //
+              diff=abs(sum-x);       //1
+              result_a = arr[i];
+                result_b = brr[j];  // {1,30}
+          }
            
            
-           if(sum>=x)  
-           j--;      //j=2
+          if(sum>=x)  
+          j--;      //j=2
            
            
-           else
-           i++;
-       }
-       return ans;
+          else
+          i++;
+      }
+      return {result_a,result_b};
+    
+
+    
+//   int closest_sum = INT_MAX;
+//     int result_a, result_b;
+
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < m; j++) {
+//             int current_sum = arr[i] + brr[j];
+//             int diff = abs(current_sum - x);
+
+//             if (diff < closest_sum) {
+//                 closest_sum = diff;
+//                 result_a = arr[i];
+//                 result_b = brr[j];
+//             }
+//         }
+//     }
+
+//     return {result_a, result_b};
     }
 };
 
