@@ -7,23 +7,27 @@ class Solution{
 public:
     long maximumSumSubarray(int k, vector<int> &arr , int n){
         // code here 
-         long sum=0,j=0,count=0,maxi=INT_MIN ;
-        for(int i=0 ; i<n ; i++)
-        {
-            sum = sum + arr[i];
-            count++ ;
-            if(count==k)
-            {
-                maxi = max(maxi,sum) ;
-                sum = sum - arr[j] ;
-                j++ ;
-                count-- ;
-            }
-        }
-        return maxi ;
+     long i = 0, j = 0;
+  long long ans = INT_MIN, sum = 0;
+
+    while (j < n) {
+        sum += arr[j];
+
+       if (j - i + 1 < k)
+       {
+        j++;
+       }
+       else if (j - i + 1 == k) {
+        ans = max(ans, sum);
+        sum -= arr[i];
+        i++;
+        j++;
+    }
+}
+
+return ans;
     }
 };
-
 
 //{ Driver Code Starts.
 int main() 
