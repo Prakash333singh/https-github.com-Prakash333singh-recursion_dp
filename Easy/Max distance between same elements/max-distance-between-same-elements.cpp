@@ -9,32 +9,25 @@ class Solution{
     int maxDistance(int arr[], int n)
     {
     //Code here
+    unordered_map<int,int>mp;
     
-      unordered_map<int,int>firstoccurance;
-      //element ,firstoccurance
-      
-      int maxi=0;
-      
-      // 1 1 2  2  2  1
-      // 0   2     4  5     max=(5-0,4-2)=5(ans)
-      
-      //basecially es problem mai phle hum first occurance of element ko store
-      //kar lenge map mai agar mil jata hai tuo diff nikal lenge current index -
-      //firstoccurance index aur update kar denge maxi ko last mai max ko return akr denge; 
-      
-      for(int i=0;i<n;i++)
-      {
-        if(firstoccurance.find(arr[i])!=firstoccurance.end())
+    int ans=0;
+    for(int i=0;i<n;i++)
+    {
+        if(mp.find(arr[i])!=mp.end())
         {
-            maxi= max(maxi,i-firstoccurance[arr[i]]);
+            ans=max(ans,i-mp[arr[i]]);
         }
         else
-        firstoccurance[arr[i]]=i;
-      }
-      return maxi;
+        {
+        mp[arr[i]]=i;
+        }
+    }
+    return ans;
+    
+    
     }
 };
-
 
 //{ Driver Code Starts.
 
