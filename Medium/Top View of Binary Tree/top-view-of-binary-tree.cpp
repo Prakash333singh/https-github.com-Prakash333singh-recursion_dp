@@ -102,55 +102,45 @@ class Solution
     public:
     //Function to return a list of nodes visible from the top view 
     //from left to right in Binary Tree.
-    void find(Node* root,int pos,int &l,int &r)
-    {
-        if(!root)return;
-        
-        l=min(l,pos); //given example mai -2
-        r=max(r,pos);//r=2
-        
-        find(root->left,pos-1,l,r);
-        find(root->right,pos+1,l,r);
-    }
     vector<int> topView(Node *root)
     {
         //Your code here
-        int l=0;//leftmost index
-        int r=0;//rightmostindex
-        find(root,0,l,r);
-        vector<int>ans(r-l+1);
-        vector<bool>filled(r-l+1,0);////value filled hai ya nhi
+        vector<int>ans;
         
-        //2 queue lenge for index and value 
-        queue<Node*>q;
-        queue<int>index;
-        q.push(root);
-        index.push(-1*l);
+         if(root==NULL)
+           return ans;  
+           
+           
+       map<int,int>m;
+       
+       queue<pair<Node *,int>>q;
+        q.push({root,0});
         
-        while(!q.empty())
-        {
-            Node* temp=q.front();
-            q.pop();
-            int pos=index.front();
-            index.pop();
-            
-            if(!filled[pos])
-            {
-                filled[pos]=1;
-                ans[pos]=temp->data;
-            }
-            if(temp->left)
-            {
-                q.push(temp->left);
-                index.push(pos-1);
-            }
-            if(temp->right)
-            {
-                q.push(temp->right);
-                index.push(pos+1);
-            }
-        }
-        return ans;
+       while(!q.empty())
+       {
+          Node *t = q.front().first;
+          
+          int height = q.front().second;
+          
+          q.pop();
+          
+          if(m[height]==NULL)
+          {    
+              m[height]=t->data;
+          }
+          if(t->left)
+          {
+              q.push({t->left,height-1});  
+          }
+          if(t->right)
+          {
+              q.push({t->right,height+1});   
+          }
+       }
+       for(auto x:m)
+       {  
+           cout<<x.second<<" ";
+       }
     }
 
 };
