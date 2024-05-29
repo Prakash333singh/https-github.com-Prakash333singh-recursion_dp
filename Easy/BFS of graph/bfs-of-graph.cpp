@@ -8,29 +8,43 @@ class Solution {
     // Function to return Breadth First Traversal of given graph.
     vector<int> bfsOfGraph(int V, vector<int> adj[]) {
         // Code here
-        int vis[V] = {0}; 
-        vis[0] = 1; 
-        queue<int> q;
-        // push the initial starting node 
-        q.push(0); 
-        vector<int> bfs; 
-        // iterate till the queue is empty 
-        while(!q.empty()) {
-           // get the topmost element in the queue 
-            int node = q.front(); 
-            q.pop(); 
-            bfs.push_back(node); 
-            // traverse for all its neighbours 
-            for(auto it : adj[node]) {
-                // if the neighbour has previously not been visited, 
-                // store in Q and mark as visited 
-                if(!vis[it]) {
-                    vis[it] = 1; 
-                    q.push(it); 
+       ///sabse phele visited array liya fir uske first element ko vis mark kar diya
+       
+        int vis[V]={0};
+        vis[0]=1;
+        
+        
+        //second thing i have taken a queue and push fisrt node into it 
+        queue<int>q;
+        q.push(0);
+        
+        //taken a answe vector to store our bfs traversal
+        vector<int>ans;
+        
+        
+        //run a loop until our q become empty
+        
+        while(!q.empty())
+        {
+            //taken a fornt node and then poped from the queue
+            int node = q.front();
+            q.pop();
+            
+            //insert the pop node into ans vector 
+            ans.push_back(node);
+            
+            //traverse its all neighbours
+            for(auto it:adj[node])
+            {
+                if(!vis[it])
+                {
+                    vis[it]=1;
+                    q.push(it);
                 }
             }
         }
-        return bfs; 
+        
+        return ans;
     }
 };
 
