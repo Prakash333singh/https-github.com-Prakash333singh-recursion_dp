@@ -17,10 +17,16 @@ class Solution
   
     unsigned int getFirstSetBit(int n)
     {
-        // Your code here
-          int count=1;
-        while(n>0 ){
-            if((n&1)==1)return count;
+       
+        int count=1;
+        
+        while( n>0 ){
+            
+            if((n&1)==1)
+            return count;
+            
+            //n = n >> 1;
+
             n>>=1;
             count++;
             
