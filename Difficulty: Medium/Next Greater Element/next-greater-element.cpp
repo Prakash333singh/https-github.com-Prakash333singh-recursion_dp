@@ -15,32 +15,38 @@ class Solution
         vector<long long>ans(n);
         
         for(int i=n-1;i>=0;i--){
+            
             //if stack is empty
             if(s.empty())
-            ans[i]=-1;
+             ans[i]=-1;
             
             else if(s.size()>0 && s.top()>arr[i])
             {
-                ans[i]=s.top();
+                ///agar stack pe bada element mil jaye
+                ans[i] = s.top();
             }
-            else if(s.size() >0 && s.top()<=arr[i])
+            else if(s.size() > 0 && s.top()<=arr[i])
             {
+                //jab stack ka top chota ho 
                 while(s.size()>0 && s.top()<=arr[i])
                 {
                     s.pop();
                 }
+                
                 if(s.size()==0)
                 {
                 ans[i]=-1;
                 }
                 else
                 {
+                  // 4 insert ho jayega index1 pe
                 ans[i]=s.top();
                 }
             }
             
             s.push(arr[i]);
         }
+    
         
         
         return ans;
