@@ -30,6 +30,7 @@ public:
 
         int start=0;
         int end=n-1;
+        
         while(start<end)
         {
             int mid=start+(end-start)/2;
@@ -43,7 +44,7 @@ public:
                 end=mid;
             }
         }
-        return end;
+        return start;
         
         //log(n)s
 //////////////0(1)
