@@ -16,26 +16,39 @@ class Solution {
         ///base case'
         //if the no of books is less then the no of students
         if(m>n)return -1;
+        
         int start=0;
         int end=0,ans;
+        
         for(int i=0;i<n;i++){
             start=max(start,arr[i]);
             end+=arr[i];
         }
+        
+        /// start=90 
+        // 
+        
         //start end mil jayenge
         
         while(start<=end){
+            
             int mid=start+(end-start)/2;
+            
              int pages=0,count=1;
+        
              for(int i=0;i<n;i++){
+                 
                  pages+=arr[i];
+                 
                  if(pages>mid){
                      count++;
                      pages=arr[i];
                  }
+                 
              }
             
-            if(count <=m){
+//if i am able successfully divide books into m students 
+            if(count <= m){
                 ans=mid;
                 end=mid-1;
             }
@@ -48,6 +61,7 @@ class Solution {
 
     }
 };
+
 
 //{ Driver Code Starts.
 
