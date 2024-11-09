@@ -37,6 +37,7 @@ class Solution {
     
 
     for (int i = 0; i < n; i++) {
+        
         sum += arr[i];
 
         if (sum == 0) {
