@@ -1,8 +1,7 @@
 //{ Driver Code Starts
-//Initial Template for C++
+// Initial Template for C++
 
-
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 
@@ -17,41 +16,43 @@ class Solution
   
     unsigned int getFirstSetBit(int n)
     {
+       int position = 1;
        
-        int count=1;
-        
-        while( n>0 ){
-            
-            if((n&1)==1)
-            return count;
-            
-            //n = n >> 1;
-
-            n>>=1;
-            count++;
-            
-        }
-            return 0;
+       while( n > 0){
+           
+           if((n&1)==1)
+           return position;
+           
+        // shift the bits of n to the right by 1 position.
+           n=n>>1;
+           
+           position++;
+       }
+       
+       
+       return position;
         
         
     }
 };
 
+
 //{ Driver Code Starts.
 
 // Driver code
-int main()
-{
+int main() {
     int t;
-    cin>>t; // testcases
-    while(t--)
-    {
+    cin >> t; // testcases
+    while (t--) {
         int n;
-        cin>>n; //input n
+        cin >> n; // input n
         Solution ob;
         printf("%u\n", ob.getFirstSetBit(n)); // function to get answer
+
+        cout << "~"
+             << "\n";
     }
-	return 0;
+    return 0;
 }
 
 // } Driver Code Ends
