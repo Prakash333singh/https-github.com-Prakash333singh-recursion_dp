@@ -15,15 +15,20 @@ class Solution
     int posOfRightMostDiffBit(int m, int n)
     {
         // Your code here
-      
-         for(int i =0 ; i< 32; i++){
-            if((m&(1<<i))^(n&(1<<i))) return i+1;
-        }
-        return -1;
+        if(m==n)return -1;
+        int position=1;
         
+        // XOR operation sets a bit to 1 wherever the bits of m and n differ.
+        int xorVal= m^n;
+        //1011^1001 =0010
+        
+        while((xorVal&1)==0){// Check if the least significant bit is 0
+              xorVal = xorVal >> 1;  // Right shift xorVal to examine the next bit
+              position++;  
+        }
+        return position;
     }
 };
-
 
 //{ Driver Code Starts.
 
@@ -38,7 +43,9 @@ int main()
          cin>>m>>n; //input m and n
          Solution ob;
          cout << ob.posOfRightMostDiffBit(m, n)<<endl;
-    }
+    
+cout << "~" << "\n";
+}
     return 0;     
 } 
 // } Driver Code Ends
