@@ -31,34 +31,27 @@ class Solution {
         ///1 2 3 7 5
         //  
         //0(n*n)
-        int sum=0;
-        int s=0,e=0;
-        
-        for(int i=0;i<n;i++){
-            
-            sum+=arr[i];
-            
-             if(sum >= target){
-                e=i;
-                while(sum >target){
-                   sum=sum-arr[s];
-                    s++;
-                }
-                
-            }
-            
-            if(sum==target){
-                ans.push_back(s+1);
-                ans.push_back(e+1);
-                return ans;
-            }
-           
-            
-        
-            
+      int sum = 0;
+    int start = 0;
+    
+    for (int end = 0; end < arr.size(); end++) {
+        sum += arr[end];
+
+        // Shrink the window if sum exceeds target
+        while (sum > target && start <= end) {
+            sum -= arr[start];
+            start++;
         }
-        
-        return {-1};
+
+        // If a valid subarray is found
+        if (sum == target) {
+            ans.push_back(start + 1);  // 1-based index
+            ans.push_back(end + 1);
+            return ans;
+        }
+    }
+    
+    return {-1};  // No subarray found
     }
 };
 
