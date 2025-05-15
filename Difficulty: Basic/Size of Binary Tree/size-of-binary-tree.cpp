@@ -96,6 +96,7 @@ void inorder(Node *root)
 
 
 // } Driver Code Ends
+
 /*
 
 Definition for Binary Tree Node
@@ -116,11 +117,11 @@ class Solution {
   public:
     int getSize(Node* node) {
         // code here
-        //base case 
-        if(node==NULL)return 0;
+       if(node==NULL)return 0;
+       int right_subtree_height=getSize(node->right);
+       int left_subtree_height=getSize(node->left);
        
-              
-        return 1 + getSize(node->left) + getSize(node->right);
+       return 1 + right_subtree_height + left_subtree_height;
     }
 };
 
@@ -140,7 +141,9 @@ int main(){
         
         cout<<res<<endl;
         
-    }
+    
+cout << "~" << "\n";
+}
 }
 
 // } Driver Code Ends
